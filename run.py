@@ -14,8 +14,6 @@ from pathlib import Path
 
 SEARCH_PATH = Path(sys.argv[-1])
 
-SEARCH_PATH = Path('/opt/shared/jobsqueue')
-
 while True:
     jobs = SEARCH_PATH.glob('*')
     jobs = list(filter(lambda x: not x.name.endswith('.run') and not x.name.endswith('.completed'), jobs))

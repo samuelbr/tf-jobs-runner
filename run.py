@@ -32,7 +32,7 @@ while True:
     if renamed_job.exists():
         #run job
         command = f'sh -f {str(renamed_job)}'
-        print(f'Run job {job} stdout: {f.name}')
+        print(f'Run job {job}')
         rc = subprocess.call(f'sh -f {str(renamed_job)}', shell=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
         print('Job finished')
         shutil.move(renamed_job, completed_job)

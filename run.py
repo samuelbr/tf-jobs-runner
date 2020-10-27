@@ -18,7 +18,7 @@ SEARCH_PATH = Path(sys.argv[-1])
 
 while True:
     jobs = SEARCH_PATH.glob('*')
-    jobs = list(filter(lambda x: not x.name.endswith('.run') and not x.name.endswith('.completed'), jobs))
+    jobs = list(filter(lambda x: x.suffix == '.queue', jobs))
     
     if len(jobs) == 0:
         time.sleep(60)
@@ -26,8 +26,8 @@ while True:
     
     job = jobs[0]
     
-    renamed_job = job.parent.joinpath(f'{job.name}.run')
-    completed_job = job.parent.joinpath(f'{job.name}.completed')
+    renamed_job = job.parent.joinpath(f'{job.stem}.run')
+    completed_job = job.parent.joinpath(f'{job.stem}.completed')
     shutil.move(job, renamed_job)
     if renamed_job.exists():
         #run job

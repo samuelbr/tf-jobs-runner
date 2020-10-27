@@ -33,6 +33,6 @@ while True:
         #run job
         command = f'sh -f {str(renamed_job)}'
         print(f'Run job {job}')
-        rc = subprocess.call(f'sh -f {str(renamed_job)}', shell=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
+        rc = subprocess.call(f'sh -f {str(renamed_job)}', shell=True, stderr=sys.stderr, stdout=sys.stdout)
         print('Job finished')
         shutil.move(renamed_job, completed_job)
